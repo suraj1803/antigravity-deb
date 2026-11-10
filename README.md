@@ -14,6 +14,16 @@ Debian (`.deb`) packaging generator for **Google Antigravity IDE**, ported direc
   - Launcher script (`/usr/bin/antigravity-ide`) supporting user flag customization via `~/.config/antigravity-ide-flags.conf`.
 - **Zero-Dependency Universal Build**: Can be built on Debian/Ubuntu using `dpkg-deb`, or on any Linux distribution (including Arch Linux) using standard POSIX tools (`bash`, `tar`, `ar`, `curl`).
 
+## System Compatibility & Requirements
+
+- **Supported Architectures**: `amd64` (x86_64) and `arm64` (aarch64).
+- **Minimum OS Versions**:
+  - **Ubuntu**: 20.04 LTS or later (including 22.04, 24.04 LTS, 24.10)
+  - **Debian**: 10 (Buster) or later (including 11, 12, 13/Trixie)
+  - **Linux Mint**: 20+ / **Pop!_OS**: 20.04+
+- **Baseline Dependencies**: `glibc >= 2.28`, `GTK >= 3.24` (compatible with both legacy and `t64` transitional packages).
+- **Application Version**: Antigravity IDE `2.6.0` (Code-OSS base `1.107.0`).
+
 ## Requirements for Building
 
 - `bash`
