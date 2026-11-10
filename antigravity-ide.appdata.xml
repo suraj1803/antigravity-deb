@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<component type="desktop-application">
+	<id>antigravity-ide.desktop</id>
+	<metadata_license>MIT</metadata_license>
+	<project_license>LicenseRef-Google-Antigravity</project_license>
+	<name>Antigravity IDE</name>
+	<url type="homepage">https://antigravity.google/</url>
+	<summary>Experience liftoff with Google Antigravity IDE</summary>
+	<description>
+		<p>Google Antigravity IDE is an agentic development platform that evolves the IDE into the agent-first era. Built on Code - OSS, it brings multi-agent pairing, proactive suggestions, and full workflow automation to developer tools.</p>
+	</description>
+	<provides>
+		<binary>antigravity-ide</binary>
+	</provides>
+	<categories>
+		<category>Development</category>
+		<category>IDE</category>
+		<category>TextEditor</category>
+	</categories>
+</component>

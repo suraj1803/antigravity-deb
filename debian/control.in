@@ -1,0 +1,32 @@
+Package: antigravity-ide
+Version: @VERSION@-@REVISION@
+Section: devel
+Priority: optional
+Architecture: @DEB_ARCH@
+Installed-Size: @INSTALLED_SIZE@
+Depends: libc6 (>= 2.28),
+ libgtk-3-0 (>= 3.24.0) | libgtk-3-0t64,
+ libnss3 (>= 2:3.30),
+ libasound2 (>= 1.0.17) | libasound2t64,
+ libgbm1 (>= 17.1.0~rc2),
+ libsecret-1-0 (>= 0.18),
+ libxkbfile1 (>= 1:1.1.0),
+ libx11-xcb1,
+ libxcb-dri3-0,
+ libxcomposite1,
+ libxdamage1,
+ libxext6,
+ libxfixes3,
+ libxrandr2,
+ libnotify4,
+ xdg-utils,
+ curl,
+ ca-certificates
+Recommends: git
+Suggests: code
+Maintainer: Suraj Biswas <surajbiswas182003@gmail.com>
+Homepage: https://antigravity.google/
+Description: An agentic development platform from Google, evolving the IDE into the agent-first era
+ Google Antigravity IDE is an agent-first development platform based on
+ Code - OSS. It integrates proactive agent orchestration, multi-modal context,
+ and complete developer workflow tooling directly within an IDE environment.

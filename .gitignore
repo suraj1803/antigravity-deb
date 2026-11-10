@@ -1,0 +1,9 @@
+# Build directories
+build/
+dist/
+cache/
+
+# Package outputs
+*.deb
+*.tar.gz
+*.tgz

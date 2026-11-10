@@ -1,0 +1,29 @@
+Format: https://www.debian.org/doc/packaging-manuals/copyright-format/1.0/
+Upstream-Name: antigravity-ide
+Upstream-Contact: Google LLC <https://antigravity.google/>
+Source: https://antigravity.google/
+
+Files: *
+Copyright: Google LLC
+License: Google-Antigravity
+
+Files: debian/* antigravity-ide.sh antigravity-ide.desktop antigravity-ide-url-handler.desktop antigravity-ide-workspace.xml antigravity-ide.appdata.xml
+Copyright: Arch Linux Contributors
+           Debian Package Maintainers
+License: 0BSD
+
+License: 0BSD
+ Permission to use, copy, modify, and/or distribute this software for
+ any purpose with or without fee is hereby granted.
+ .
+ THE SOFTWARE IS PROVIDED "AS IS" AND THE AUTHOR DISCLAIMS ALL
+ WARRANTIES WITH REGARD TO THIS SOFTWARE INCLUDING ALL IMPLIED WARRANTIES
+ OF MERCHANTABILITY AND FITNESS. IN NO EVENT SHALL THE AUTHOR BE LIABLE
+ FOR ANY SPECIAL, DIRECT, INDIRECT, OR CONSEQUENTIAL DAMAGES OR ANY
+ DAMAGES WHATSOEVER RESULTING FROM LOSS OF USE, DATA OR PROFITS, WHETHER IN
+ AN ACTION OF CONTRACT, NEGLIGENCE OR OTHER TORTIOUS ACTION, ARISING OUT
+ OF OR IN CONNECTION WITH THE USE OR PERFORMANCE OF THIS SOFTWARE.
+
+License: Google-Antigravity
+ See /opt/antigravity-ide/resources/app/LICENSE.txt and
+ /opt/antigravity-ide/LICENSES.chromium.html for terms.
