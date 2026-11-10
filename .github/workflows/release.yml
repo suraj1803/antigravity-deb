@@ -1,0 +1,45 @@
+name: Build & Release Debian Packages
+
+on:
+  push:
+    tags:
+      - 'v*'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  build-and-release:
+    name: Build & Release Packages
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Install build dependencies
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y curl tar binutils xz-utils coreutils dpkg-dev
+
+      - name: Build Debian packages (amd64 & arm64)
+        run: |
+          chmod +x build.sh
+          ./build.sh all
+
+      - name: Generate Checksums
+        run: |
+          cd dist
+          sha256sum *.deb > SHA256SUMS.txt
+          b2sum *.deb > B2SUMS.txt
+          ls -lh
+
+      - name: Publish GitHub Release
+        uses: softprops/action-gh-release@v2
+        with:
+          files: |
+            dist/*.deb
+            dist/SHA256SUMS.txt
+            dist/B2SUMS.txt
+          generate_release_notes: true
