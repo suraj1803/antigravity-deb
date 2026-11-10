@@ -6,6 +6,7 @@ Debian (`.deb`) packaging generator for **Google Antigravity IDE**, ported direc
 
 - **Upstream Release Support**: Packages the official Google Antigravity IDE stable release for both `amd64` (x86_64) and `arm64` (aarch64).
 - **Core Dump / SIGTRAP Fix**: Overwrites upstream bundled `@parcel/watcher` 2.5.1 with the prebuilt 2.5.6 release from npm, preventing the known exit race condition (`SIGTRAP` in NodeService).
+- **Ubuntu 24.04+ Sandbox Integration**: Bundles an AppArmor profile (`/etc/apparmor.d/antigravity-ide`) that authorizes unprivileged user namespaces, enabling Chromium's security sandbox out-of-the-box on modern Ubuntu releases without requiring `--no-sandbox`.
 - **Desktop & System Integration**:
   - Desktop entries (`antigravity-ide.desktop` and `antigravity-ide-url-handler.desktop`).
   - AppStream metainfo specification (`antigravity-ide.appdata.xml`).

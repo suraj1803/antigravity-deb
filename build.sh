@@ -10,7 +10,7 @@ SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 PKGNAME="antigravity-ide"
 PKGVER="2.6.0"
 BUILD_ID="5526304964083712"
-PKGREL="1"
+PKGREL="2"
 WATCHER_VER="2.5.6"
 
 CACHE_DIR="${SCRIPT_DIR}/cache"
@@ -115,6 +115,7 @@ build_deb() {
     msg "Preparing build tree in ${build_dir}..."
     rm -rf "$build_dir"
     mkdir -p "${pkg_root}/opt"
+    mkdir -p "${pkg_root}/etc/apparmor.d"
     mkdir -p "${pkg_root}/usr/bin"
     mkdir -p "${pkg_root}/usr/share/applications"
     mkdir -p "${pkg_root}/usr/share/metainfo"
@@ -145,7 +146,9 @@ build_deb() {
     install -Dm644 "${SCRIPT_DIR}/antigravity-ide.desktop" "${pkg_root}/usr/share/applications/${PKGNAME}.desktop"
     install -Dm644 "${SCRIPT_DIR}/antigravity-ide-url-handler.desktop" "${pkg_root}/usr/share/applications/${PKGNAME}-url-handler.desktop"
     install -Dm644 "${SCRIPT_DIR}/antigravity-ide.appdata.xml" "${pkg_root}/usr/share/metainfo/${PKGNAME}.appdata.xml"
-    install -Dm644 "${SCRIPT_DIR}/antigravity-ide-workspace.xml" "${pkg_root}/usr/share/mime/packages/${PKGNAME}-workspace.xml"
+    install -Dm644 "${SCRIPT_DIR}/antigravity-ide.workspace.xml" "${pkg_root}/usr/share/mime/packages/${PKGNAME}-workspace.xml" 2>/dev/null || \
+        install -Dm644 "${SCRIPT_DIR}/antigravity-ide-workspace.xml" "${pkg_root}/usr/share/mime/packages/${PKGNAME}-workspace.xml"
+    install -Dm644 "${SCRIPT_DIR}/antigravity-ide.apparmor" "${pkg_root}/etc/apparmor.d/${PKGNAME}"
     install -Dm644 "${SCRIPT_DIR}/debian/copyright" "${pkg_root}/usr/share/doc/${PKGNAME}/copyright"
 
     # Shell completions
@@ -169,7 +172,7 @@ build_deb() {
     msg "Generating md5sums and control file..."
     (
         cd "$pkg_root"
-        find opt usr -type f ! -path 'DEBIAN/*' -exec md5sum {} + > "${debian_dir}/md5sums"
+        find opt usr etc -type f ! -path 'DEBIAN/*' -exec md5sum {} + > "${debian_dir}/md5sums"
     )
     chmod 644 "${debian_dir}/md5sums"
 
@@ -208,7 +211,7 @@ build_deb() {
         # data.tar.xz
         (
             cd "$pkg_root"
-            tar --owner=0 --group=0 --numeric-owner -cJf "${work_archive}/data.tar.xz" opt usr
+            tar --owner=0 --group=0 --numeric-owner -cJf "${work_archive}/data.tar.xz" opt usr etc
         )
 
         (

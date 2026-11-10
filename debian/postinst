@@ -18,6 +18,11 @@ case "$1" in
             gtk-update-icon-cache -q -t -f /usr/share/icons/hicolor || true
         fi
 
+        # Load AppArmor profile (enabling unprivileged user namespaces on Ubuntu 24.04+)
+        if which apparmor_parser >/dev/null 2>&1 && [ -f /etc/apparmor.d/antigravity-ide ]; then
+            apparmor_parser -r -W -T /etc/apparmor.d/antigravity-ide 2>/dev/null || true
+        fi
+
         echo "==> NOTE: Custom flags can be configured in: ~/.config/antigravity-ide-flags.conf"
         ;;
     abort-upgrade|abort-remove|abort-deconfigure)

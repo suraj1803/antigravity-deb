@@ -1,0 +1,9 @@
+# AppArmor profile for Antigravity IDE
+# Allows unprivileged user namespaces for Chromium / Electron sandboxing on Ubuntu 24.04+
+abi <abi/4.0>,
+include <tunables/global>
+
+profile antigravity-ide /opt/antigravity-ide/antigravity-ide flags=(unconfined) {
+  userns,
+  include <abstractions/base>
+}
