@@ -28,18 +28,59 @@ jobs:
           chmod +x build.sh
           ./build.sh all
 
-      - name: Generate Checksums
+      - name: Generate Checksums & Release Notes
         run: |
           cd dist
           sha256sum *.deb > SHA256SUMS.txt
           b2sum *.deb > B2SUMS.txt
-          ls -lh
+
+          cat << 'EOF' > release_notes.md
+          Debian and Ubuntu binary packages (`.deb`) for **Google Antigravity IDE** (`amd64` and `arm64`).
+
+          ### 🚀 Highlights & Stability Fixes
+          * **Official Google Upstream**: Built from official Google CDN binaries for Antigravity IDE `2.6.0` (Code-OSS `1.107.0`).
+          * **Ubuntu 24.04+ Out-of-the-Box Sandbox**: Bundles an AppArmor security profile (`/etc/apparmor.d/antigravity-ide`) authorizing unprivileged user namespaces. Launches securely on Ubuntu 24.04 LTS and newer without requiring `--no-sandbox`.
+          * **Exit SIGTRAP / Core Dump Fix**: Patches bundled `@parcel/watcher` 2.5.1 with upstream 2.5.6 from npm, eliminating application exit crash and coredump.
+          * **Multi-Architecture**: Native `.deb` binaries for both `amd64` (x86_64) and `arm64` (aarch64 / Apple Silicon / Raspberry Pi).
+          * **Broad Distro Support**: Compatible with Debian 10–13 and Ubuntu 20.04–26.04 (with transitional `t64` package support).
+          * **Desktop Integration**: Desktop entries, AppStream metadata, MIME workspace types, custom flags (`~/.config/antigravity-ide-flags.conf`), and shell completions.
+          * **Permissive MIT License**: Packaging scripts, AppArmor profile, and configurations licensed under MIT.
+
+          ---
+
+          ### 🔒 Integrity Checksums (SHA256)
+          ```text
+          EOF
+          cat SHA256SUMS.txt >> release_notes.md
+          cat << 'EOF' >> release_notes.md
+          ```
+
+          ---
+
+          ### 📥 Quick Install
+
+          #### For Intel / AMD 64-bit (`amd64` / `x86_64`)
+          ```bash
+          sudo apt update && sudo apt install -y curl
+          curl -LO $(curl -s https://api.github.com/repos/suraj1803/antigravity-deb/releases/latest | grep "browser_download_url.*amd64.deb" | cut -d '"' -f 4)
+          sudo apt install ./antigravity-ide_*_amd64.deb
+          ```
+
+          #### For ARM 64-bit (`arm64` / `aarch64`)
+          ```bash
+          sudo apt update && sudo apt install -y curl
+          curl -LO $(curl -s https://api.github.com/repos/suraj1803/antigravity-deb/releases/latest | grep "browser_download_url.*arm64.deb" | cut -d '"' -f 4)
+          sudo apt install ./antigravity-ide_*_arm64.deb
+          ```
+          EOF
+          cat release_notes.md
 
       - name: Publish GitHub Release
         uses: softprops/action-gh-release@v2
         with:
+          name: "Google Antigravity IDE ${{ github.ref_name }} (amd64 / arm64)"
+          body_path: dist/release_notes.md
           files: |
             dist/*.deb
             dist/SHA256SUMS.txt
             dist/B2SUMS.txt
-          generate_release_notes: true
