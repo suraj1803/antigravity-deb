@@ -10,7 +10,7 @@ SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 PKGNAME="antigravity-ide"
 PKGVER="2.6.0"
 BUILD_ID="5526304964083712"
-PKGREL="2"
+PKGREL="1"
 WATCHER_VER="2.5.6"
 
 CACHE_DIR="${SCRIPT_DIR}/cache"

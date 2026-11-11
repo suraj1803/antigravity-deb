@@ -95,8 +95,8 @@ cd antigravity-deb
 
 Outputs are written to the [`dist/`](dist/) directory:
 ```
-dist/antigravity-ide_2.6.0-2_amd64.deb
-dist/antigravity-ide_2.6.0-2_arm64.deb
+dist/antigravity-ide_2.6.0-1_amd64.deb
+dist/antigravity-ide_2.6.0-1_arm64.deb
 ```
 
 ---
