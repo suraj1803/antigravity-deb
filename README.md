@@ -3,7 +3,7 @@
 [![Release](https://img.shields.io/github/v/release/suraj1803/antigravity-deb?color=blue&logo=github)](https://github.com/suraj1803/antigravity-deb/releases)
 [![Build & Release](https://img.shields.io/github/actions/workflow/status/suraj1803/antigravity-deb/release.yml?branch=main&label=build)](https://github.com/suraj1803/antigravity-deb/actions)
 [![Architectures](https://img.shields.io/badge/arch-amd64%20%7C%20arm64-blueviolet)](https://github.com/suraj1803/antigravity-deb/releases)
-[![License: 0BSD](https://img.shields.io/badge/license-0BSD-green)](LICENSE)
+[![License: MIT](https://img.shields.io/badge/license-MIT-blue.svg)](LICENSE)
 
 Binary Debian (`.deb`) packaging generator for **Google Antigravity IDE**, ported from the Arch Linux AUR package implementation with native stability fixes, multi-architecture support, and full Ubuntu/Debian system integration.
 
@@ -149,5 +149,6 @@ antigravity-deb/
 
 ## 📄 License & Attribution
 
-* **Packaging Scripts & Desktop Files**: Licensed under [`0BSD`](LICENSE) (Zero-Clause BSD).
-* **Google Antigravity IDE Application**: Property of Google LLC and distributed under Google's terms (`LicenseRef-Google-Antigravity`). See upstream license details inside the package at `/opt/antigravity-ide/resources/app/LICENSE.txt`.
+* **Packaging Scripts, Profiles & Configurations**: Licensed under the [MIT License](LICENSE).
+  * Copyright (c) 2026 Suraj Biswas & Arch Linux Contributors.
+* **Google Antigravity IDE Application**: Property of Google LLC and distributed under Google's proprietary terms (`LicenseRef-Google-Antigravity`). See upstream license details inside the package at `/opt/antigravity-ide/resources/app/LICENSE.txt`.
